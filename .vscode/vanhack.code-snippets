@@ -1,0 +1,89 @@
+{
+  // Place your Dot Frontend Test React Native workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  "Styles": {
+    "prefix": "stl",
+    "body": [
+      "export const $1 = styled.$2(",
+      "  ({ theme: { colors, fonts, scaleHP, scaleWP } }) => css``,",
+      ");$0"
+    ]
+  },
+  "Scaling": {
+    "prefix": "scl",
+    "body": ["$1: ${scaleWP($2)}px;$0"]
+  },
+  "Colors": {
+    "prefix": "cls",
+    "body": ["color: ${colors.$1};$0"]
+  },
+  "Fonts": {
+    "prefix": "fts",
+    "body": ["font-family: ${fonts.$2};$0"]
+  },
+  "Messages": {
+    "prefix": "msgs",
+    "body": [
+      "import { defineMessages } from \"react-intl\";",
+      "",
+      "const messages = defineMessages({",
+      "  $0",
+      "});",
+      "",
+      "export default messages;",
+      ""
+    ]
+  },
+  "Message": {
+    "prefix": "msg",
+    "body": ["$1: {", "  id: \"$2\",", "  defaultMessage: \"$3\"", "},$0"]
+  },
+  "Format message": {
+    "prefix": "fm",
+    "body": ["formatMessage(messages$1)$0"]
+  },
+  "Import messages": {
+    "prefix": "imsg",
+    "body": ["import messages from \"./messages\";"]
+  },
+  "Import styles": {
+    "prefix": "isty",
+    "body": ["import { $1 } from \"./styles\";$0"]
+  },
+  "Export default": {
+    "prefix": "exp",
+    "body": ["export { default } from \"./$1\";$0"]
+  },
+  "Skeleton component": {
+    "prefix": "cmp",
+    "body": [
+      "",
+      "const $1 = () => {",
+      "  return null;",
+      "};",
+      "",
+      "export default $2;$0"
+    ]
+  },
+  "Styled Component": {
+    "prefix": "scomp",
+    "body": ["export const $1 = styled.$2`", "  $0", "`;"]
+  },
+  "Export interface IProps": {
+    "prefix": "exi",
+    "body": ["export interface IProps {", "  $0", "}"]
+  },
+  "Import interface": {
+    "prefix": "ii",
+    "body": ["import { $0 } from \"./interfaces\";"]
+  },
+  "Debug view border": {
+    "prefix": "dvb",
+    "body": ["border-width: 1px;", "border-color: $0;"]
+  }
+}
