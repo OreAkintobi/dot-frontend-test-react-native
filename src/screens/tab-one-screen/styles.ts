@@ -1,20 +1,15 @@
-import { StyleSheet } from 'react-native';
+import { I_AwardCategory } from '@types';
+import { FlatList, FlatListProps } from 'react-native';
+import styled, { css } from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+export const Container = styled.View(
+  ({ theme: { colors } }) => css`
+    flex: 1;
+    background-color: ${colors.pageBackground};
+    justify-content: center;
+  `,
+);
 
-export default styles;
+export const CategoryList = styled(
+  FlatList as new () => FlatList<I_AwardCategory>,
+)<FlatListProps<I_AwardCategory>>``;

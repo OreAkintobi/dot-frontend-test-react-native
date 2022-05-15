@@ -9,3 +9,7 @@ export interface I_AwardCategory {
   items: I_Nominee[];
   title: string;
 }
+
+export interface I_Root_Response {
+  items: I_AwardCategory[];
+}

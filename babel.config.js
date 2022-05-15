@@ -21,7 +21,6 @@ module.exports = function (api) {
         },
       ],
       'babel-plugin-styled-components',
-      'react-native-reanimated/plugin',
     ],
   };
 };
