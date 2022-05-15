@@ -8,7 +8,7 @@ import { useTheme } from 'styled-components/native';
 import { Category } from './Category';
 import { CategoryList, Container } from './styles';
 
-export const TabOneScreen = () => {
+export const AwardScreen = () => {
   const { colors } = useTheme();
   const dispatch = useAppDispatch();
   const { awards, isLoading } = useAppSelector(state => state.awards);
