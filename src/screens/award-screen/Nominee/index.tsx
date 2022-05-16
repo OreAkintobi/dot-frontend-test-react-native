@@ -1,5 +1,5 @@
 import { I_Nominee } from '@types';
-import { Dimensions } from 'react-native';
+import { tileSize } from '@utils';
 
 import {
   NomineeImage,
@@ -18,19 +18,16 @@ export const Nominee = ({
   nominee,
   onSelectNominee,
   isSelectedNominee,
-}: I_NomineeProps) => {
-  const { width } = Dimensions.get('window');
-  const isTablet = width > 480;
-  const numberOfColumns = !isTablet ? 2 : 3;
-  const tileSize = width / numberOfColumns - 16;
+}: I_NomineeProps) => (
+  <NomineeListItem isSelected={isSelectedNominee} style={{ width: tileSize }}>
+    <NomineeText numberOfLines={2}>{nominee?.title}</NomineeText>
 
-  return (
-    <NomineeListItem isSelected={isSelectedNominee} style={{ width: tileSize }}>
-      <NomineeText numberOfLines={2}>{nominee?.title}</NomineeText>
+    <NomineeImage resizeMode="contain" source={{ uri: nominee?.photoUrL }} />
 
-      <NomineeImage resizeMode="contain" source={{ uri: nominee?.photoUrL }} />
-
-      <NomineeVoteButton onPress={onSelectNominee} text="Vote" />
-    </NomineeListItem>
-  );
-};
+    <NomineeVoteButton
+      disabled={isSelectedNominee}
+      onPress={onSelectNominee}
+      text="Vote"
+    />
+  </NomineeListItem>
+);

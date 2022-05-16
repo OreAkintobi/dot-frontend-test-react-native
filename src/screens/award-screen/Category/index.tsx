@@ -1,6 +1,6 @@
 import { I_AwardCategory, I_Nominee } from '@types';
+import { numberOfColumns } from '@utils';
 import { PropsWithChildren } from 'react';
-import { Dimensions } from 'react-native';
 
 import { Nominee } from '../Nominee';
 
@@ -22,10 +22,6 @@ export const Category = ({
   selectedNominee,
   onVote,
 }: PropsWithChildren<ICategoryProps>) => {
-  const { width } = Dimensions.get('window');
-  const isTablet = width > 480;
-  const numberOfColumns = !isTablet ? 2 : 3;
-
   const renderItem = ({ item, index }: { item: I_Nominee; index: number }) => (
     <Nominee
       key={index}

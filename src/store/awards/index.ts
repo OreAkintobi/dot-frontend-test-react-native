@@ -1,2 +1,2 @@
-export { default as awardsReducer } from './slice';
+export { default as awardsReducer, submitVotes } from './slice';
 export { getCategories } from './thunk';

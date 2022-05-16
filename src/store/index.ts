@@ -18,4 +18,4 @@ export type AsyncThunkConfig = {
   state?: TRootState;
 };
 
-export { getCategories } from './awards';
+export { getCategories, submitVotes } from './awards';

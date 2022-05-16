@@ -5,6 +5,7 @@ import { useTheme } from 'styled-components';
 import { TCssStyle } from '../../theme';
 
 import {
+  ButtonGradient,
   ButtonIconWrapper,
   ButtonText,
   ButtonWrapper,
@@ -15,6 +16,7 @@ export interface IButtonProps extends PressableProps {
   text?: string;
   isLoading?: boolean;
   disabled?: boolean;
+  hasGradient?: boolean;
   wrapperStyles?: TCssStyle;
   textStyles?: TCssStyle;
   icon?: any;
@@ -58,7 +60,12 @@ export const Button = ({
       {...buttonProps}
       cssStyles={wrapperStyles}
     >
-      {showButtonChildren()}
+      <ButtonGradient
+        colors={[colors.buttonLight, colors.buttonDark]}
+        disabled={disabled}
+      >
+        {showButtonChildren()}
+      </ButtonGradient>
     </ButtonWrapper>
   );
 };
