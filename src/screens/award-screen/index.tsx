@@ -19,7 +19,13 @@ export const AwardScreen = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const isDisabled = Object.keys(votedNominees).length < awards?.items.length;
+  const votedNomineesValuesArray = Object.keys(votedNominees);
+
+  const isDisabled = votedNomineesValuesArray.length < awards?.items.length;
+
+  const successVotedText = `Success! You have voted for ${votedNomineesValuesArray.join(
+    ', ',
+  )}`;
 
   const onVote = (category: I_AwardCategory, nominee: I_Nominee) => {
     setVotedNominees({
@@ -88,9 +94,7 @@ export const AwardScreen = () => {
       <AwardModal
         modalVisible={modalVisible}
         onClose={() => setModalVisible(false)}
-        text={`Success! You have voted for ${Object.values(votedNominees).join(
-          ', ',
-        )}`}
+        text={successVotedText}
       />
     </>
   );

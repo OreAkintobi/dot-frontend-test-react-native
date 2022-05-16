@@ -28,8 +28,9 @@ export const ModalView = styled.View(
 );
 
 export const ModalText = styled.Text(
-  ({ theme: { scaleHP } }) => css`
+  ({ theme: { colors, scaleHP } }) => css`
     margin-bottom: ${scaleHP(15)}px;
+    color: ${colors.defaultFont};
     text-align: center;
   `,
 );
