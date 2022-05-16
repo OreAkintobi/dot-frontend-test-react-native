@@ -4,7 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 type TAppStackParamList = TAppRoutesStackParamList;
 
 export type TAppRoutesStackParamList = ParamListBase & {
-  TabOne: undefined;
+  Award: undefined;
 };
 
 declare global {
@@ -14,7 +14,7 @@ declare global {
   }
 }
 
-export type TabOneScreenProps = NativeStackScreenProps<
+export type AwardScreenProps = NativeStackScreenProps<
   TAppRoutesStackParamList,
-  'TabOne'
+  'Award'
 >;

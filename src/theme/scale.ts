@@ -29,7 +29,9 @@ export const scaleHP = (dimension: number) => {
 };
 
 export const scaleArray = ([top, right, bottom, left]: number[]) =>
-  `${scaleHP(top)} ${scaleWP(right)} ${scaleHP(bottom)} ${scaleWP(left)}`;
+  `${scaleHP(top)}px ${scaleWP(right)}px ${scaleHP(bottom)}px ${scaleWP(
+    left,
+  )}px`;
 
 export const scaleVerticalHorizontal = ([vertical, horizontal]: number[]) =>
-  `${scaleHP(vertical)} ${scaleWP(horizontal)}`;
+  `${scaleHP(vertical)}px ${scaleWP(horizontal)}px`;

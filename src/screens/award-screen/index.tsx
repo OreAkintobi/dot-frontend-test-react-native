@@ -1,4 +1,5 @@
-import { getCategories } from '@store';
+import { AwardModal } from '@components';
+import { getCategories, submitVotes } from '@store';
 import { I_AwardCategory, I_Nominee } from '@types';
 import { useAppDispatch, useAppSelector } from '@utils';
 import { useEffect, useState } from 'react';
@@ -6,15 +7,25 @@ import { ActivityIndicator } from 'react-native';
 import { useTheme } from 'styled-components/native';
 
 import { Category } from './Category';
-import { CategoryList, Container } from './styles';
+import { CategoryList, Container, VoteButton } from './styles';
 
-export const TabOneScreen = () => {
+export const AwardScreen = () => {
   const { colors } = useTheme();
   const dispatch = useAppDispatch();
   const { awards, isLoading } = useAppSelector(state => state.awards);
   const [votedNominees, setVotedNominees] = useState<{ [key: string]: string }>(
     {},
   );
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const votedNomineesValuesArray = Object.keys(votedNominees);
+
+  const isDisabled = votedNomineesValuesArray.length < awards?.items.length;
+
+  const successVotedText = `Success! You have voted for ${votedNomineesValuesArray.join(
+    ', ',
+  )}`;
 
   const onVote = (category: I_AwardCategory, nominee: I_Nominee) => {
     setVotedNominees({
@@ -44,6 +55,14 @@ export const TabOneScreen = () => {
 
   const keyExtractor = (_item: any, index: number) => String(index);
 
+  const handleSubmit = () => {
+    setModalVisible(true);
+
+    setTimeout(() => {
+      dispatch(submitVotes(votedNominees));
+    }, 1000);
+  };
+
   if (isLoading) {
     return (
       <Container>
@@ -53,13 +72,30 @@ export const TabOneScreen = () => {
   }
 
   return (
-    <Container>
-      <CategoryList
-        data={awards?.items}
-        keyExtractor={keyExtractor}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
+    <>
+      <Container>
+        <CategoryList
+          data={awards?.items}
+          keyExtractor={keyExtractor}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
+      </Container>
+
+      {!isDisabled && (
+        <VoteButton
+          disabled={isDisabled}
+          isLoading={isLoading}
+          onPress={handleSubmit}
+          text="Submit Votes"
+        />
+      )}
+
+      <AwardModal
+        modalVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        text={successVotedText}
       />
-    </Container>
+    </>
   );
 };

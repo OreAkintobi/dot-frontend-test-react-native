@@ -1,1 +1,1 @@
-export { TabOneScreen } from './tab-one-screen';
+export { AwardScreen } from './award-screen';

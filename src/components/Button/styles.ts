@@ -1,6 +1,8 @@
 import { TCssStyle } from '@theme';
+import { LinearGradient } from 'expo-linear-gradient';
 import styled, { css } from 'styled-components/native';
 
+// Extensible styling
 type TButtonCssStyles = { cssStyles?: TCssStyle };
 
 interface IButtonTextProps extends TButtonCssStyles {
@@ -9,14 +11,25 @@ interface IButtonTextProps extends TButtonCssStyles {
 }
 
 export const ButtonWrapper = styled.Pressable<IButtonTextProps>(
-  ({ theme: { colors, scaleHP, scaleWP }, cssStyles }) => css`
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+  ({ theme: { colors, scaleHP, scaleWP }, cssStyles, disabled }) => css`
     height: ${scaleHP(54)}px;
     width: ${scaleWP(315)}px;
     border-radius: ${scaleHP(8)}px;
     background-color: ${colors.buttonLight};
+    opacity: ${disabled ? 0.5 : 1};
+    ${cssStyles}
+  `,
+);
+
+// @ts-ignore
+export const ButtonGradient = styled(LinearGradient)<IButtonTextProps>(
+  ({ theme: { scaleHP }, cssStyles, disabled }) => css`
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+    opacity: ${disabled ? 0.5 : 1};
+    border-radius: ${scaleHP(8)}px;
     ${cssStyles}
   `,
 );

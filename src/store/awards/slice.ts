@@ -8,8 +8,13 @@ const awardsSlice = createSlice({
   initialState: {
     awards: { items: [] } as I_Root_Response,
     isLoading: false,
+    selectedVotes: {} as any,
   },
-  reducers: {},
+  reducers: {
+    submitVotes: (state, action) => {
+      state.selectedVotes = action.payload;
+    },
+  },
   extraReducers: builder => {
     // authenticateUser
     builder.addCase(getCategories.pending, state => {
@@ -25,4 +30,5 @@ const awardsSlice = createSlice({
   },
 });
 
+export const { submitVotes } = awardsSlice.actions;
 export default awardsSlice.reducer;
