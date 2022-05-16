@@ -11,7 +11,13 @@ export const AppRoutes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Award">
-        <Stack.Screen component={AwardScreen} name="Award" />
+        <Stack.Screen
+          component={AwardScreen}
+          name="Award"
+          options={{
+            title: 'Golden Globe Awards!',
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
